@@ -17,11 +17,14 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Delete_internal extends AppCompatActivity {
+    // create object
+
     DBHelper myDB;
     ArrayList<User> userList;
     ListView listView;
     User user;
 
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,6 +34,8 @@ public class Delete_internal extends AppCompatActivity {
         userList = new ArrayList<>();
         Cursor data = myDB.getListContents();
         int numRows = data.getCount();
+        /*function returns the number of rows in a table satisfying the criteria specified in the WHERE clause.
+        It sets the number of rows or non NULL column values. COUNT() returns 0 if there were no matching rows*/
         if(numRows == 0){
             Toast.makeText(Delete_internal.this,"The Database is empty  :(.",Toast.LENGTH_LONG).show();
         }else{
@@ -47,25 +52,31 @@ public class Delete_internal extends AppCompatActivity {
             listView = (ListView) findViewById(R.id.listView);
             listView.setAdapter(adapter);
 
+
+            //Callback method to be invoked when an item in this AdapterView has been clicked
+
             listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
                 public void onItemClick(AdapterView<?> parent, final View view, final int position, final long id) {
+
                     AlertDialog.Builder alertDialog = new AlertDialog.Builder(Delete_internal.this);
+
                     final  int num = position;
+
                     new AlertDialog.Builder(Delete_internal.this).setIcon(android.R.drawable.ic_delete)
                             .setTitle("Confirm Delete...")
                             .setMessage("Are you sure you want delete this?")
                             .setPositiveButton("YES", new DialogInterface.OnClickListener(){
+
                                 @Override
                                 public void onClick(DialogInterface dialog,int which) {
-                                //    String name=userList.get(num).getFirstName();
                                     String id=userList.get(num).gettid();
-                            //myDB.deleteContactByName(name);
-                            myDB.deleteContactByID(id);
-                            Intent intent = new Intent(Delete_internal.this,Delete_internal.class);
-                            startActivity(intent);
-                            Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
-                        }
-                    }).setNegativeButton("NO", null).show();
+
+                                    myDB.deleteContactByID(id);
+                                    Intent intent = new Intent(Delete_internal.this,Delete_internal.class);
+                                    startActivity(intent);
+                                    Toast.makeText(getApplicationContext(), "Deleted", Toast.LENGTH_SHORT).show();
+                                }
+                            }).setNegativeButton("NO", null).show();
 
                 }
             });

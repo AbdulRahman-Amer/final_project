@@ -17,6 +17,7 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 public class ViewListContents extends AppCompatActivity {
+    //create object
     ArrayList<User> userList;
     ListView listView;
     User user;

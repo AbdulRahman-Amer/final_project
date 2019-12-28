@@ -17,17 +17,19 @@ import org.json.JSONArray;
 import java.util.ArrayList;
 
 public class search_external extends AppCompatActivity {
+    // create object
     ArrayList<User> userList;
     ListView listView;
     User user;
     phpConn phpC = new phpConn();
     String answer2 = External.getAnswer2();
     String localhost ="192.168.100.8";
-    final String fetch3 = "http://192.168.100.8/sqli/fetch3json.php?name=";
+    final String fetch3 = "http://192.168.100.8/sqli/fetch3json.php?name=";// call php name
 
 
     JSONArray js_array;
 
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

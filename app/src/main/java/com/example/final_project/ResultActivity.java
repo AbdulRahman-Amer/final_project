@@ -23,11 +23,14 @@ public class ResultActivity extends AppCompatActivity {
 
         userList = new ArrayList<>();
         Cursor data = myDB.getListContents();
+
         int numRows = data.getCount();
+        //check row
         if(numRows == 0){
             Toast.makeText(ResultActivity.this,"The Database is empty  :(.",Toast.LENGTH_LONG).show();
         }else{
             int i=0;
+            // moveToFirst is used when you need to start iterating from start after you have already reached some position.
             while(data.moveToNext()){
                 user = new User(data.getString(0),data.getString(1),data.getString(2),data.getString(3));
                 userList.add(i,user);

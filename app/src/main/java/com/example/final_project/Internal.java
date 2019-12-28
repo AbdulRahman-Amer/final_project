@@ -13,23 +13,34 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class Internal extends AppCompatActivity {
+    // create object button and edit text and call class php connection
     DBHelper mydb;
     Button btnAdd,btnView,btnback,btndelet,btnsearch;
     EditText edSearch;
     static String answer1 = null;
     static public String getAnswer1(){return answer1;}
+
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.internal);
+
         mydb = new DBHelper(this);
+
+        //Java code will link and load that button and convert it to concrete object
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnView = (Button) findViewById(R.id.btnView);
         btnback = (Button) findViewById(R.id.btnback);
         btndelet = (Button) findViewById(R.id.btndelet);
         btnsearch = (Button) findViewById(R.id.btnsearch);
         edSearch = (EditText) findViewById(R.id.edSearch);
-
+        /*
+         * When the user clicks a button, the Button object receives an on-click event.
+         *  To make click event work add android:onClick attribute to the Button element
+         *  in your XML layout. The value for this attribute must be the name of the
+         * method you want to call in response to a click event.
+         */
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

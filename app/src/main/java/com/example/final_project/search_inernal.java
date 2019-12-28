@@ -11,13 +11,13 @@ import android.widget.Toast;
 import java.util.ArrayList;
 
 public class search_inernal extends AppCompatActivity {
+    //create object
     DBHelper myDB;
     ArrayList<User> userList;
     ListView listView;
     User user;
 
-
-
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

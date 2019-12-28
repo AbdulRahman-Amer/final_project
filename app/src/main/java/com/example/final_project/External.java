@@ -15,6 +15,8 @@ import android.widget.Toast;
 import org.json.JSONArray;
 
 public class External extends AppCompatActivity {
+
+    // create object button and edit text and call class php connection
     Button btnAdd,btnView,btnback,btndelet,btnsearch;
     EditText edSearch;
     phpConn phpC = new phpConn();
@@ -23,10 +25,13 @@ public class External extends AppCompatActivity {
     static String answer2 = null;
     static public String getAnswer2(){return answer2;}
 
+    /** Called when the activity is first created. */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_external);
+
+        //Java code will link and load that button and convert it to concrete object
         btnAdd = (Button) findViewById(R.id.btnAdd);
         btnView = (Button) findViewById(R.id.btnView);
         btnback = (Button) findViewById(R.id.btnback);
@@ -34,6 +39,12 @@ public class External extends AppCompatActivity {
         btnsearch = (Button) findViewById(R.id.btnsearch);
         edSearch = (EditText) findViewById(R.id.edSearch);
 
+        /*
+         * When the user clicks a button, the Button object receives an on-click event.
+         *  To make click event work add android:onClick attribute to the Button element
+         *  in your XML layout. The value for this attribute must be the name of the
+         * method you want to call in response to a click event.
+         */
         btnView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,8 +55,10 @@ public class External extends AppCompatActivity {
                 //Log.v("george getRet",getRet);
                 try {
                     phpC.urlCon(fetch);
-                    JSONArray js_array = new JSONArray(getRet);
 
+                    /* jArrayFavFans is the JSONArray i build from string i get from response.
+                    its giving me correct JSONArray */
+                    JSONArray js_array = new JSONArray(getRet);
 
                     /* reading the JSON array line by line */
                     for (int i = 0; i < js_array.length(); i++) {

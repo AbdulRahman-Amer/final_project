@@ -18,15 +18,18 @@ import java.util.ArrayList;
 
 public class Delete_external extends AppCompatActivity {
 
+    // create object
     ArrayList<User> userList;
     ListView listView;
     User user;
     phpConn phpC = new phpConn();
     String localhost ="192.168.100.8";
-    final String fetch = "http://"+localhost+"/sqli/fetch2json.php";
+    final String fetch = "http://"+localhost+"/sqli/fetch2json.php";// call php
     final String fetch1="http://"+localhost+"/sqli/delete.php?id=";
 
     JSONArray js_array;
+
+    /** Called when the activity is first created. */
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

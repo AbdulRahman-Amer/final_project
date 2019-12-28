@@ -4,6 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#97ACE6"
     tools:context=".MainActivity">
 
     <Button
@@ -23,6 +24,7 @@
         android:layout_height="wrap_content"
         android:layout_marginEnd="80dp"
         android:layout_marginBottom="200dp"
+        android:background="@android:color/holo_orange_dark"
         android:text="internal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent" />
